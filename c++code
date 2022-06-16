@@ -1,0 +1,155 @@
+
+
+//array based implementation   using global array;-
+#include <bits/stdc++.h>
+using namespace std;
+int arr[3];
+int top=-1;
+int size=3;
+
+int isempty()
+{
+    if(top==-1)
+    return 1;
+    else
+    return 0;
+    
+}
+int isfull()
+{
+    if(top==size-1)
+    return 1;
+    else
+    return 0;
+    
+}
+void push( int val)
+{
+    if(isfull())
+    {
+        printf("stack is full");
+        
+    }
+    else
+    {
+        top++;
+       arr[top]=val;
+    }
+}
+int pop()
+{
+   if(isempty())
+   {
+       printf("empty cannot pop");
+       return -1;
+   }
+   else
+   {
+       int a=arr[top];
+       top--;
+       return a;
+   }
+}
+int main()
+{
+    
+   push(38);
+   push(39);
+   push(340);
+   printf("%d",pop()) ; 
+   push(40);
+  
+   
+    return 0;
+}
+
+<----*****************----------->
+
+
+
+
+
+//structure based implementation;-
+#include <stdio.h>
+#include <stdlib.h>
+
+struct stack{
+    int size;
+    int top;
+    int *arr;
+    
+};
+
+int isempty(struct stack *s)
+{
+    if(s->top==-1)
+    return 1;
+    else
+    return 0;
+    
+}
+int isfull(struct stack *s)
+{
+    if(s->top==(s->size)-1)
+    return 1;
+    else
+    return 0;
+    
+}
+void push(struct stack *s,int val)
+{
+    if(isfull(s))
+    {
+        printf("stack is full");
+        
+    }
+    else
+    {
+        s->top++;
+        s->arr[s->top]=val;
+    }
+}
+int pop(struct stack *s)
+{
+   if(isempty(s))
+   {
+       printf("empty cannot pop");
+       return -1;
+   }
+   else
+   {
+       int a=s->arr[s->top];
+       s->top--;
+       return a;
+   }
+}
+int main()
+{
+    struct stack *s1=(struct stack*)malloc(sizeof(struct stack));
+       s1->size=4;
+       s1->top=-1;
+       s1->arr=(int*)malloc(s1->size*sizeof(int));
+     
+     
+     push(s1,60);
+     push(s1,661);
+     push(s1,62);
+     push(s1,63);
+   
+   pop(s1);
+   pop(s1);
+   pop(s1);
+   pop(s1);
+   
+   if(isempty(s1))printf("isempty");
+   if(isfull(s1))printf("full");
+   printf("%d ",s1->top);
+    printf("%d ",s1->size);
+   
+    
+
+    return 0;
+}
+
+
+
